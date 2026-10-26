@@ -1,0 +1,480 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>จดหมายเล็ก ๆ ถึงเธอ 💌</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #f276aa;
+    --dark-pink: #dc4d8b;
+    --light-pink: #fff0f7;
+    --purple: #eadfff;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 22px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Tahoma, sans-serif;
+    color: #bd5788;
+    background:
+        radial-gradient(circle at 10% 15%, #fff 0 3%, transparent 4%),
+        radial-gradient(circle at 90% 80%, #fff 0 4%, transparent 5%),
+        linear-gradient(135deg, #ffe2ef, #fff6fa 48%, #f0e5ff);
+    overflow-x: hidden;
+}
+
+/* หัวใจลอย */
+.heart {
+    position: fixed;
+    bottom: -50px;
+    font-size: 22px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    animation: floatHeart 10s linear infinite;
+}
+
+.heart:nth-child(1) { left: 7%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 24%; animation-delay: 3s; }
+.heart:nth-child(3) { left: 45%; animation-delay: 1s; }
+.heart:nth-child(4) { left: 68%; animation-delay: 4s; }
+.heart:nth-child(5) { left: 88%; animation-delay: 2s; }
+.heart:nth-child(6) { left: 56%; animation-delay: 6s; }
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) rotate(-10deg);
+        opacity: 0;
+    }
+    15% { opacity: 0.7; }
+    85% { opacity: 0.6; }
+    100% {
+        transform: translateY(-115vh) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+/* การ์ดหลัก */
+.card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 490px;
+    padding: 30px 23px 22px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.94);
+    border: 2px solid #ffd0e4;
+    border-radius: 32px;
+    box-shadow:
+        0 15px 45px rgba(220, 100, 157, 0.15),
+        inset 0 0 0 5px rgba(255, 238, 247, 0.6);
+    animation: cardAppear 0.65s ease;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.top-heart {
+    font-size: 35px;
+    margin-bottom: 8px;
+    animation: heartbeat 1.7s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    12% { transform: scale(1.12); }
+    24% { transform: scale(1); }
+    36% { transform: scale(1.08); }
+}
+
+h1 {
+    color: #e35b98;
+    font-size: clamp(23px, 6vw, 29px);
+    line-height: 1.55;
+    margin: 10px 0;
+}
+
+p {
+    line-height: 1.9;
+    font-size: 15px;
+}
+
+.sub {
+    color: #bd82a3;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+}
+
+.divider {
+    color: #f3a1c5;
+    margin: 14px 0;
+    letter-spacing: 5px;
+}
+
+/* รูปและ GIF */
+.media {
+    width: 100%;
+    height: 220px;
+    margin: 20px auto;
+    border: 2px dashed #ffabd0;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #fff5fa, #fff0f7);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* ปุ่ม */
+.buttons {
+    position: relative;
+    width: 100%;
+    height: 105px;
+    margin: 18px auto 0;
+}
+
+button {
+    border: none;
+    border-radius: 30px;
+    padding: 13px 21px;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition:
+        background 0.2s,
+        box-shadow 0.2s,
+        transform 0.2s;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.primary {
+    color: white;
+    background: linear-gradient(135deg, #ff9bc6, #ed68a4);
+    box-shadow: 0 6px 15px rgba(235, 103, 164, 0.23);
+}
+
+.primary:hover {
+    background: linear-gradient(135deg, #fa87b9, #e95498);
+    box-shadow: 0 8px 18px rgba(235, 103, 164, 0.3);
+}
+
+.secondary {
+    color: #a57c98;
+    background: #f8edf4;
+}
+
+.ready-button {
+    position: static;
+    margin-top: 15px;
+}
+
+.yes {
+    position: absolute;
+    left: 6%;
+    top: 15px;
+}
+
+.no {
+    position: absolute;
+    left: 55%;
+    top: 15px;
+    white-space: nowrap;
+    color: #a57c98;
+    background: #f7edf4;
+    z-index: 5;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.note {
+    padding: 13px;
+    margin-top: 18px;
+    border-radius: 18px;
+    background: #fff1f7;
+    color: #bd5788;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.small {
+    margin-top: 25px;
+    color: #c493af;
+    font-size: 12px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 7px 13px;
+    border-radius: 30px;
+    background: #fff0f7;
+    color: #d96a9f;
+    font-size: 12px;
+}
+
+@media (max-width: 380px) {
+    .card {
+        padding: 25px 15px 20px;
+    }
+
+    .media {
+        height: 180px;
+    }
+
+    button {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    .yes {
+        left: 2%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- หัวใจลอย -->
+<div class="heart">💗</div>
+<div class="heart">💕</div>
+<div class="heart">💖</div>
+<div class="heart">💞</div>
+<div class="heart">🌸</div>
+<div class="heart">💗</div>
+
+<main class="card">
+
+    <!-- หน้าแรก: พร้อมอ่านหรือยัง -->
+    <section id="welcome">
+        <div class="top-heart">💌</div>
+        <span class="tag">A little message for you</span>
+
+        <h1>มีข้อความเล็ก ๆ<br>อยากส่งถึงเธอ 💗</h1>
+
+        <p>
+            เรามีอะไรบางอย่างอยากบอกเธอ<br>
+            ตั้งใจเตรียมข้อความนี้มาให้เลยนะ 🥺
+        </p>
+        <div class="media">
+    <img src="I Love You Hug GIF by Sappy Seals.gif" alt="รูปต้อนรับน่ารัก">
+        </div>
+
+        <h1 style="font-size: 21px;">
+            พร้อมที่จะอ่านต่อหรือยัง? 🌷
+        </h1>
+
+        <p class="sub">
+            ค่อย ๆ อ่านก็ได้นะ ไม่ต้องรีบเลย
+        </p>
+
+        <button class="primary ready-button" onclick="goToPage1()">
+            พร้อมแล้ว ไปอ่านกัน 💕
+        </button>
+
+        <div>
+            <button class="secondary ready-button"
+                    onclick="showWaitMessage()">
+                ขอทำใจก่อน 🙈
+            </button>
+        </div>
+
+        <div id="waitMessage" class="note hidden">
+            ได้เลยย ไม่ต้องรีบนะ 💗<br>
+            พร้อมเมื่อไหร่ค่อยกดปุ่มด้านบนก็ได้ 🌸
+        </div>
+    </section>
+
+    <!-- คำถามที่ 1 -->
+    <section id="page1" class="hidden">
+        <div class="top-heart">🌷</div>
+        <p class="sub">💌 คำถามข้อที่ 1</p>
+
+        <h1>ขอคุยด้วยได้มั้ย? 💗</h1>
+
+        <p>
+            เราอยากทำความรู้จักเธอให้มากขึ้น<br>
+            ขอเป็นคนหนึ่งที่ได้คุยกับเธอได้ไหมนะ 🥺
+        </p>
+
+        <div class="media">
+            <img src="shy-rabbit.gif" alt="กระต่ายเขิน">
+        </div>
+
+        <div class="buttons">
+            <button class="primary yes" onclick="goToPage2()">
+                💗 ตกลง
+            </button>
+
+            <button class="no" data-no>
+                🥺 ขอปฏิเสธ
+            </button>
+        </div>
+    </section>
+
+    <!-- คำถามที่ 2 -->
+    <section id="page2" class="hidden">
+        <div class="top-heart">💖</div>
+        <p class="sub">💌 คำถามข้อที่ 2</p>
+
+        <h1>ขอจีบได้รึป่าว? 💕</h1>
+
+        <p>
+            เราว่าเธอน่ารักมากเลยนะ 🌸<br>
+            อยากลองทำความรู้จักเธอให้มากกว่านี้<br>
+            ให้โอกาสเราได้ไหมนะ 💗
+        </p>
+
+        <div class="media">
+            <img src="love-languages.gif" alt="GIF ความรัก">
+        </div>
+
+        <div class="buttons">
+            <button class="primary yes" onclick="sayYes()">
+                💖 ตกลง
+            </button>
+
+            <button class="no" data-no>
+                🥺 ขอปฏิเสธ
+            </button>
+        </div>
+    </section>
+
+    <!-- หน้าตอบตกลง -->
+    <section id="pageYes" class="hidden">
+        <div class="top-heart">💞</div>
+        <span class="tag">You made my day!</span>
+
+        <h1>เย้! ดีใจจังเลย 💗</h1>
+
+        <p>
+            ขอบคุณที่ให้โอกาสเรานะ 🥹💕<br>
+            เราจะค่อย ๆ ทำความรู้จักกัน<br>
+            และจะใส่ใจความรู้สึกของเธอให้ดีที่สุด
+        </p>
+
+        <div class="media">
+            <img src="doraemon-doraemon-jump.gif" alt="GIF ดีใจ">
+        </div>
+
+        <p>
+            หวังว่าเราจะได้สร้างความทรงจำดี ๆ ด้วยกันนะ 🌷
+        </p>
+    </section>
+
+    <p class="small">🌷 เราตั้งใจทำให้เธอนะ 🌷</p>
+</main>
+
+<script>
+function showPage(id) {
+    document.querySelectorAll("main section").forEach(function(section) {
+        section.classList.add("hidden");
+    });
+
+    document.getElementById(id).classList.remove("hidden");
+
+    // เลื่อนกลับขึ้นด้านบนเมื่อเปลี่ยนหน้า
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+function showWaitMessage() {
+    document.getElementById("waitMessage").classList.remove("hidden");
+}
+
+function goToPage1() {
+    showPage("page1");
+}
+
+function goToPage2() {
+    showPage("page2");
+}
+
+function sayYes() {
+    showPage("pageYes");
+}
+
+/* ปุ่มปฏิเสธขยับหนี */
+function moveNo(button) {
+    const area = button.parentElement;
+
+    const maxX = Math.max(0, area.clientWidth - button.offsetWidth);
+    const maxY = Math.max(0, area.clientHeight - button.offsetHeight);
+
+    const currentX = parseFloat(button.style.left) || button.offsetLeft;
+    const currentY = parseFloat(button.style.top) || button.offsetTop;
+
+    let x = Math.random() * maxX;
+    let y = Math.random() * maxY;
+
+    // ถ้าสุ่มได้ใกล้จุดเดิมเกินไป ให้เปลี่ยนตำแหน่ง
+    if (maxX > 30 && Math.abs(x - currentX) < 30) {
+        x = (currentX + maxX / 2) % maxX;
+    }
+
+    if (maxY > 30 && Math.abs(y - currentY) < 30) {
+        y = (currentY + maxY / 2) % maxY;
+    }
+
+    button.style.left = x + "px";
+    button.style.top = y + "px";
+}
+
+// ตั้งค่าปุ่มหนีบนคอมพิวเตอร์และมือถือ
+document.querySelectorAll("[data-no]").forEach(function(button) {
+
+    // เมื่อเมาส์เข้าใกล้
+    button.addEventListener("mouseenter", function() {
+        moveNo(button);
+    });
+
+    // เมื่อแตะบนหน้าจอมือถือ
+    button.addEventListener("pointerdown", function(event) {
+        event.preventDefault();
+        moveNo(button);
+    });
+
+    // ป้องกันการกดปุ่มปฏิเสธ
+    button.addEventListener("click", function(event) {
+        event.preventDefault();
+        moveNo(button);
+    });
+});
+</script>
+
+</body>
+</html>
